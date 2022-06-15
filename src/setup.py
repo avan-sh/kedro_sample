@@ -1,9 +1,9 @@
 from setuptools import find_packages, setup
+from pathlib import Path
 
-entry_point = (
-    "sf = sf.__main__:main"
-)
+entry_point = "sf = sf.__main__:main"
 
+conf_path = str((Path.cwd() / "./conf/[!local]*/*").resolve())
 
 # get the dependencies and installs
 with open("requirements.txt", encoding="utf-8") as f:
@@ -22,6 +22,8 @@ setup(
     packages=find_packages(exclude=["tests"]),
     entry_points={"console_scripts": [entry_point]},
     install_requires=requires,
+    include_package_data=True,
+    package_data={"": [conf_path]},
     extras_require={
         "docs": [
             "docutils<0.18.0",

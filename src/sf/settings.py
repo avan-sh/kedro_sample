@@ -23,6 +23,9 @@ https://kedro.readthedocs.io/en/stable/kedro_project_setup/settings.html."""
 
 # Directory that holds configuration.
 # CONF_SOURCE = "conf"
+from pathlib import Path
+
+CONF_SOURCE = Path(__file__).parent.parent / "conf"
 
 # Class that manages how configuration is loaded.
 # from kedro.config import TemplatedConfigLoader
